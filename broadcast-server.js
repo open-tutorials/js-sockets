@@ -40,4 +40,5 @@ const server = createServer(client => {
 })
 
 server.maxConnections = 50;
-server.listen(8081, 'localhost');
+server.listen(8081, '0.0.0.0');
+console.log('server has been started');
