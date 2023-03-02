@@ -3,9 +3,12 @@ const { Socket } = require('net');
 const client = new Socket();
 client.connect(8081, '127.0.0.1', function() {
 	console.log('connected');
-	client.write('Hello, server! Love, Client.');
+	client.write('method: GET');
 
-    setInterval(()=> client.write('❤️'), 1000);
+    setTimeout(()=> {
+		client.write('\npath: /users/1\ncontent-length: 5\n\nhello');
+		client.write('method: POST\npath: /users/1/');
+	}, 1000);
 });
 
 client.on('data', function(data) {
